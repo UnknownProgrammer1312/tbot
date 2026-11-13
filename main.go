@@ -20,9 +20,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	b.Handle("/start", func(c tele.Context) error {
+		return c.Send("Hello! this is a simple bot that echoes your messages. Send me any text and I will repeat it back to you.")
+	})
 
 	b.Handle("/hello", func(c tele.Context) error {
-		return c.Send("Hello!")
+		return c.Send("Hello! How are you doing today?")
 	})
 
 	b.Handle(tele.OnText, func(c tele.Context) error {
